@@ -19,3 +19,4 @@ transformers
 torch
 pwdlib[argon2]
 argon2-cffi
+PyMuPDF
