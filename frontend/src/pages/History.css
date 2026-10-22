@@ -1,0 +1,1931 @@
+/* =========================================================
+   HISTORY PAGE
+========================================================= */
+
+.history-page {
+  min-height: 100vh;
+  width: 100%;
+
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at 10% 5%,
+      rgba(37, 99, 235, 0.11),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(124, 58, 237, 0.08),
+      transparent 30%
+    ),
+    #080b14 !important;
+
+  color: #f8fafc !important;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  padding-bottom: 40px;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.history-topbar {
+  height: 74px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 38px;
+
+  box-sizing: border-box;
+
+  background:
+    rgba(8, 11, 20, 0.95) !important;
+
+  border-bottom:
+    1px solid #1b2639;
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  backdrop-filter: blur(15px);
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.history-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.history-logo {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #7c3aed
+    ) !important;
+
+  color: #ffffff !important;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 25px
+    rgba(37, 99, 235, 0.28);
+}
+
+.history-brand h2 {
+  margin: 0;
+
+  color: #ffffff !important;
+
+  font-size: 16px;
+}
+
+.history-brand span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #64748b !important;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   DASHBOARD BUTTON
+========================================================= */
+
+.history-dashboard-button {
+  padding: 10px 17px;
+
+  border:
+    1px solid #26344c !important;
+
+  border-radius: 9px;
+
+  background:
+    #0d1422 !important;
+
+  color: #aebbd0 !important;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.history-dashboard-button:hover {
+  background:
+    #121c30 !important;
+
+  border-color:
+    #3b82f6 !important;
+
+  color: #ffffff !important;
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.history-heading {
+  max-width: 1150px;
+
+  margin: 0 auto;
+
+  padding:
+    48px 25px 28px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+}
+
+.history-eyebrow {
+  display: inline-block;
+
+  color: #60a5fa !important;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.history-heading h1 {
+  margin:
+    9px 0 8px;
+
+  color: #ffffff !important;
+
+  font-size: 34px;
+
+  font-weight: 800;
+}
+
+.history-heading p {
+  max-width: 650px;
+
+  margin: 0 auto;
+
+  color: #71809a !important;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   SEARCH CARD
+========================================================= */
+
+.history-search-card {
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding: 22px 25px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+
+  border:
+    1px solid #1d2940 !important;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #101827,
+      #0b111e
+    ) !important;
+
+  box-shadow:
+    0 15px 40px
+    rgba(0, 0, 0, 0.2);
+}
+
+.history-search-icon {
+  width: 45px;
+  height: 45px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background:
+    rgba(37, 99, 235, 0.12);
+
+  font-size: 19px;
+}
+
+.history-search-content {
+  flex: 1;
+}
+
+.history-search-content h2 {
+  margin:
+    0 0 4px;
+
+  color: #ffffff !important;
+
+  font-size: 15px;
+}
+
+.history-search-content p {
+  margin:
+    0 0 14px;
+
+  color: #64748b !important;
+
+  font-size: 10px;
+}
+
+.history-search-row {
+  display: flex;
+
+  gap: 10px;
+}
+
+.history-search-row input {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 43px;
+
+  box-sizing: border-box;
+
+  padding: 0 13px;
+
+  border:
+    1px solid #273650 !important;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background:
+    #090f1b !important;
+
+  color: #ffffff !important;
+
+  font-size: 12px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.history-search-row input::placeholder {
+  color: #4e5d74 !important;
+}
+
+.history-search-row input:focus {
+  border-color:
+    #3b82f6 !important;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(59, 130, 246, 0.08);
+}
+
+.history-search-row button {
+  height: 43px;
+
+  padding: 0 18px;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    ) !important;
+
+  color: #ffffff !important;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.history-search-row button:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(37, 99, 235, 0.25);
+}
+
+.history-search-row button:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   SPINNER
+========================================================= */
+
+.history-spinner {
+  width: 13px;
+  height: 13px;
+
+  display: inline-block;
+
+  border:
+    2px solid
+    rgba(255, 255, 255, 0.3);
+
+  border-top-color:
+    #ffffff;
+
+  border-radius: 50%;
+
+  animation:
+    history-spin 0.7s linear infinite;
+}
+
+@keyframes history-spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.history-loading {
+  max-width: 1060px;
+
+  margin:
+    20px auto 0;
+
+  padding: 16px 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  border:
+    1px solid #24314a !important;
+
+  border-radius: 10px;
+
+  background:
+    #0d1422 !important;
+}
+
+.history-large-spinner {
+  width: 28px;
+  height: 28px;
+
+  flex-shrink: 0;
+
+  border:
+    3px solid #26334b;
+
+  border-top-color:
+    #3b82f6;
+
+  border-radius: 50%;
+
+  animation:
+    history-spin 0.8s linear infinite;
+}
+
+.history-loading strong {
+  color: #ffffff !important;
+
+  font-size: 11px;
+}
+
+.history-loading p {
+  margin:
+    4px 0 0;
+
+  color: #5f6d83 !important;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.history-message {
+  max-width: 1060px;
+
+  margin:
+    20px auto 0;
+
+  padding:
+    12px 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border:
+    1px solid
+    rgba(239, 68, 68, 0.18) !important;
+
+  border-radius: 9px;
+
+  background:
+    rgba(239, 68, 68, 0.07) !important;
+
+  color: #f87171 !important;
+
+  font-size: 11px;
+}
+
+.history-message span {
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(239, 68, 68, 0.13);
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   RESULTS
+========================================================= */
+
+.history-results {
+  max-width: 1150px;
+
+  margin:
+    40px auto 0;
+
+  padding: 0 25px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.history-summary {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+
+  padding:
+    20px 22px;
+
+  border:
+    1px solid #1d2940 !important;
+
+  border-radius: 13px;
+
+  background:
+    #0d1422 !important;
+}
+
+.history-summary h2 {
+  max-width: 650px;
+
+  margin:
+    6px 0 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: #ffffff !important;
+
+  font-size: 17px;
+}
+
+.total-analysis {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    8px 12px;
+
+  border-radius: 8px;
+
+  background:
+    rgba(37, 99, 235, 0.08);
+
+  border:
+    1px solid
+    rgba(59, 130, 246, 0.15);
+}
+
+.total-analysis span {
+  color: #69768d;
+
+  font-size: 9px;
+}
+
+.total-analysis strong {
+  color: #60a5fa;
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   HISTORY LIST
+========================================================= */
+
+.history-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.history-analysis-card {
+  padding: 22px;
+
+  border:
+    1px solid #1d2940 !important;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #101827,
+      #0b111e
+    ) !important;
+
+  box-shadow:
+    0 12px 35px
+    rgba(0, 0, 0, 0.16);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.history-analysis-card:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    #2b3b58 !important;
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.analysis-card-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 17px;
+
+  padding-bottom: 15px;
+
+  border-bottom:
+    1px solid #18243a;
+}
+
+.analysis-number {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.analysis-number span {
+  color: #52617a;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.analysis-number strong {
+  color: #ffffff;
+
+  font-size: 14px;
+}
+
+.analysis-date {
+  color: #536177;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   SCORE GRID
+========================================================= */
+
+.history-score-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 12px;
+}
+
+.history-score-card {
+  padding: 17px;
+
+  border:
+    1px solid #1d2940;
+
+  border-radius: 10px;
+
+  background:
+    #0b111e;
+}
+
+.final-history-score {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(37, 99, 235, 0.1),
+      #0b111e
+    );
+
+  border-color:
+    rgba(59, 130, 246, 0.2);
+}
+
+.history-score-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color: #78869d;
+
+  font-size: 10px;
+}
+
+.history-score-icon {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+
+  background:
+    rgba(59, 130, 246, 0.1);
+
+  color: #60a5fa;
+
+  font-size: 11px;
+}
+
+.history-score-card > strong {
+  display: block;
+
+  margin:
+    13px 0;
+
+  color: #ffffff;
+
+  font-size: 26px;
+}
+
+.history-progress {
+  width: 100%;
+
+  height: 5px;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background:
+    #1b2639;
+}
+
+.history-progress-bar {
+  height: 100%;
+
+  border-radius: 10px;
+}
+
+.final-history-progress {
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #7c3aed
+    );
+}
+
+.skill-history-progress {
+  background:
+    linear-gradient(
+      90deg,
+      #059669,
+      #34d399
+    );
+}
+
+.semantic-history-progress {
+  background:
+    linear-gradient(
+      90deg,
+      #7c3aed,
+      #a78bfa
+    );
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.history-skills-container {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 12px;
+
+  margin-top: 12px;
+}
+
+.history-skill-section {
+  padding: 17px;
+
+  border:
+    1px solid #1b2639;
+
+  border-radius: 10px;
+
+  background:
+    #0b111e;
+}
+
+.history-skill-heading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 13px;
+}
+
+.history-skill-heading h3 {
+  margin:
+    0 0 3px;
+
+  color: #ffffff;
+
+  font-size: 12px;
+}
+
+.history-skill-heading span {
+  color: #56647b;
+
+  font-size: 8px;
+}
+
+.matched-history-icon,
+.missing-history-icon {
+  width: 29px;
+  height: 29px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background:
+    rgba(16, 185, 129, 0.1);
+
+  color: #34d399;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+.missing-history-icon {
+  background:
+    rgba(245, 158, 11, 0.1);
+
+  color: #fbbf24;
+}
+
+.history-skills {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+}
+
+.history-badge {
+  padding:
+    6px 8px;
+
+  border-radius: 6px;
+
+  font-size: 9px;
+
+  font-weight: 600;
+}
+
+.history-matched {
+  background:
+    rgba(16, 185, 129, 0.07);
+
+  border:
+    1px solid
+    rgba(16, 185, 129, 0.14);
+
+  color: #34d399;
+}
+
+.history-missing {
+  background:
+    rgba(245, 158, 11, 0.07);
+
+  border:
+    1px solid
+    rgba(245, 158, 11, 0.14);
+
+  color: #fbbf24;
+}
+
+.history-empty-skills {
+  color: #56647b;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   EMPTY HISTORY
+========================================================= */
+
+.empty-history {
+  padding: 55px 25px;
+
+  text-align: center;
+
+  border:
+    1px solid #1d2940;
+
+  border-radius: 13px;
+
+  background:
+    #0d1422;
+}
+
+.empty-history-icon {
+  font-size: 35px;
+
+  margin-bottom: 12px;
+}
+
+.empty-history h3 {
+  margin:
+    0 0 6px;
+
+  color: #ffffff;
+
+  font-size: 16px;
+}
+
+.empty-history p {
+  margin:
+    0 0 18px;
+
+  color: #64748b;
+
+  font-size: 10px;
+}
+
+.empty-history button {
+  padding:
+    10px 16px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    );
+
+  color: #ffffff;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.history-footer {
+  max-width: 1150px;
+
+  margin:
+    45px auto 0;
+
+  padding:
+    20px 25px;
+
+  box-sizing: border-box;
+
+  border-top:
+    1px solid #151e30;
+
+  text-align: center;
+
+  color: #3f4b60;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .history-score-grid {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .history-topbar {
+    height: 64px;
+
+    padding:
+      0 15px;
+  }
+
+  .history-brand h2 {
+    font-size: 13px;
+  }
+
+  .history-brand span {
+    display: none;
+  }
+
+  .history-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .history-dashboard-button {
+    padding:
+      8px 10px;
+
+    font-size: 10px;
+  }
+
+
+  .history-heading {
+    padding:
+      32px 15px 22px;
+  }
+
+  .history-heading h1 {
+    font-size: 27px;
+  }
+
+  .history-heading p {
+    font-size: 11px;
+  }
+
+
+  .history-search-card {
+    margin:
+      0 15px;
+
+    padding:
+      18px;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .history-search-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .history-search-content {
+    width: 100%;
+  }
+
+  .history-search-row {
+    flex-direction: column;
+  }
+
+  .history-search-row button {
+    width: 100%;
+  }
+
+
+  .history-results {
+    padding:
+      0 15px;
+
+    margin-top: 30px;
+  }
+
+
+  .history-summary {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .history-summary h2 {
+    max-width: 100%;
+
+    font-size: 15px;
+  }
+
+  .total-analysis {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    justify-content: space-between;
+  }
+
+
+  .history-analysis-card {
+    padding:
+      17px;
+  }
+
+  .analysis-card-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+
+  .history-score-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .history-skills-container {
+    grid-template-columns: 1fr;
+  }
+
+
+  .history-loading,
+  .history-message {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .history-heading h1 {
+    font-size: 24px;
+  }
+
+  .history-search-card {
+    padding: 15px;
+  }
+
+  .history-analysis-card {
+    padding: 14px;
+  }
+
+}
+
+/* ============================================================
+   INTERVIEW HISTORY
+   DARK THEME
+   ============================================================ */
+
+.interview-history-section {
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid #1b2639;
+}
+
+
+/* ============================================================
+   INTERVIEW HISTORY HEADER
+   ============================================================ */
+
+.interview-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.interview-history-header h2 {
+  margin: 8px 0 6px;
+  color: #ffffff !important;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.interview-history-header p {
+  margin: 0;
+  color: #71809a !important;
+  font-size: 13px;
+}
+
+
+/* TOTAL INTERVIEWS */
+
+.total-interviews {
+  min-width: 150px;
+  padding: 16px 22px;
+  box-sizing: border-box;
+
+  border-radius: 12px;
+
+  background: #0d1422 !important;
+
+  border: 1px solid #26344c !important;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.15);
+}
+
+.total-interviews span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #71809a !important;
+
+  font-size: 11px;
+}
+
+.total-interviews strong {
+  display: block;
+
+  color: #60a5fa !important;
+
+  font-size: 28px;
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   INTERVIEW HISTORY LIST
+   ============================================================ */
+
+.interview-history-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+
+/* ============================================================
+   INTERVIEW CARD
+   ============================================================ */
+
+.interview-history-card {
+  overflow: hidden;
+
+  border:
+    1px solid #1d2940 !important;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #101827,
+      #0b111e
+    ) !important;
+
+  box-shadow:
+    0 12px 35px
+    rgba(0, 0, 0, 0.16);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.interview-history-card:hover {
+  transform: translateY(-2px);
+
+  border-color:
+    #2b3b58 !important;
+}
+
+
+/* ============================================================
+   INTERVIEW CARD HEADER
+   ============================================================ */
+
+.interview-card-header {
+  display: grid;
+
+  grid-template-columns:
+    100px 1fr 80px;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 20px 22px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease;
+}
+
+.interview-card-header:hover {
+  background:
+    rgba(37, 99, 235, 0.04);
+}
+
+
+/* INTERVIEW NUMBER */
+
+.interview-number {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.interview-number span {
+  color: #52617a !important;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.interview-number strong {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #ffffff !important;
+
+  font-size: 15px;
+
+  font-weight: 800;
+}
+
+
+/* QUESTION */
+
+.interview-question-preview {
+  min-width: 0;
+}
+
+.interview-question-preview h3 {
+  margin:
+    0 0 10px;
+
+  color: #ffffff !important;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   INTERVIEW META
+   ============================================================ */
+
+.interview-meta {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+}
+
+.interview-meta span {
+  display: inline-block;
+
+  padding:
+    6px 9px;
+
+  border-radius: 6px;
+
+  background:
+    #111c2d !important;
+
+  border:
+    1px solid #1e2c43;
+
+  color: #8ea1bd !important;
+
+  font-size: 9px;
+}
+
+
+/* ============================================================
+   INTERVIEW SCORE
+   ============================================================ */
+
+.interview-score {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 5px;
+}
+
+.interview-score strong {
+  display: block;
+
+  color: #60a5fa !important;
+
+  font-size: 24px;
+
+  font-weight: 800;
+}
+
+.interview-score span {
+  color: #71809a !important;
+
+  font-size: 9px;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   INTERVIEW DETAILS
+   ============================================================ */
+
+.interview-details {
+  padding:
+    0 22px 22px;
+
+  border-top:
+    1px solid #18243a;
+
+  background:
+    #0a101c !important;
+}
+
+
+/* ============================================================
+   DETAIL BLOCK
+   ============================================================ */
+
+.interview-detail-block {
+  margin-top: 20px;
+}
+
+.interview-detail-block h4 {
+  margin:
+    0 0 9px;
+
+  color: #ffffff !important;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.interview-detail-block p {
+  margin: 0;
+
+  color: #8998ad !important;
+
+  font-size: 11px;
+
+  line-height: 1.7;
+}
+
+
+/* ANSWER */
+
+.interview-answer {
+  padding: 14px;
+
+  white-space: pre-line;
+
+  border:
+    1px solid #1d2940;
+
+  border-radius: 9px;
+
+  background:
+    #0d1422 !important;
+
+  color: #aebbd0 !important;
+
+  font-size: 11px;
+
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   INTERVIEW SCORE GRID
+   ============================================================ */
+
+.interview-score-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, 1fr);
+
+  gap: 8px;
+
+  margin-top: 20px;
+}
+
+.interview-score-grid > div {
+  padding:
+    12px 8px;
+
+  border:
+    1px solid #1d2940;
+
+  border-radius: 8px;
+
+  background:
+    #0d1422 !important;
+
+  text-align: center;
+}
+
+.interview-score-grid span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #596981 !important;
+
+  font-size: 8px;
+}
+
+.interview-score-grid strong {
+  color: #60a5fa !important;
+
+  font-size: 16px;
+
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   TIME INFORMATION
+   ============================================================ */
+
+.interview-time-info {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 16px;
+}
+
+.interview-time-info span {
+  padding:
+    7px 10px;
+
+  border:
+    1px solid #1d2940;
+
+  border-radius: 6px;
+
+  background:
+    #0d1422 !important;
+
+  color: #71809a !important;
+
+  font-size: 9px;
+}
+
+
+/* ============================================================
+   FEEDBACK GRID
+   ============================================================ */
+
+.interview-feedback-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 12px;
+
+  margin-top: 18px;
+}
+
+.interview-strengths,
+.interview-improvements {
+  padding: 14px;
+
+  border:
+    1px solid #1d2940;
+
+  border-radius: 9px;
+
+  background:
+    #0d1422 !important;
+}
+
+.interview-strengths h4,
+.interview-improvements h4 {
+  margin:
+    0 0 9px;
+
+  color: #ffffff !important;
+
+  font-size: 11px;
+}
+
+.interview-strengths ul,
+.interview-improvements ul {
+  margin: 0;
+
+  padding-left: 18px;
+}
+
+.interview-strengths li,
+.interview-improvements li {
+  margin-bottom: 6px;
+
+  color: #8998ad !important;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   MATCHED TOPICS
+   ============================================================ */
+
+.interview-topics {
+  margin-top: 18px;
+}
+
+.interview-topics h4 {
+  margin:
+    0 0 9px;
+
+  color: #ffffff !important;
+
+  font-size: 11px;
+}
+
+.interview-topics > div {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+}
+
+.interview-topics span {
+  padding:
+    5px 8px;
+
+  border:
+    1px solid
+    rgba(59, 130, 246, 0.18);
+
+  border-radius: 6px;
+
+  background:
+    rgba(37, 99, 235, 0.08);
+
+  color: #60a5fa !important;
+
+  font-size: 9px;
+}
+
+
+/* ============================================================
+   CREATED DATE
+   ============================================================ */
+
+.interview-created-date {
+  margin-top: 18px;
+
+  padding-top: 13px;
+
+  border-top:
+    1px solid #18243a;
+
+  color: #4f5d73 !important;
+
+  font-size: 8px;
+}
+
+
+/* ============================================================
+   EMPTY INTERVIEW HISTORY
+   ============================================================ */
+
+.empty-interview-history {
+  padding:
+    45px 20px;
+
+  border:
+    1px solid #1d2940;
+
+  border-radius: 13px;
+
+  background:
+    #0d1422 !important;
+
+  text-align: center;
+}
+
+.empty-interview-icon {
+  margin-bottom: 12px;
+
+  font-size: 35px;
+}
+
+.empty-interview-history h3 {
+  margin:
+    0 0 7px;
+
+  color: #ffffff !important;
+
+  font-size: 16px;
+}
+
+.empty-interview-history p {
+  max-width: 500px;
+
+  margin:
+    0 auto 18px;
+
+  color: #64748b !important;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+.empty-interview-history button {
+  padding:
+    10px 16px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    ) !important;
+
+  color: #ffffff !important;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .interview-card-header {
+    grid-template-columns:
+      80px 1fr 70px;
+  }
+
+  .interview-score-grid {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .interview-history-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .total-interviews {
+    width: 100%;
+  }
+
+  .interview-card-header {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .interview-score {
+    align-items: flex-start;
+  }
+
+  .interview-score strong {
+    font-size: 21px;
+  }
+
+  .interview-score-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .interview-feedback-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 400px) {
+
+  .interview-details {
+    padding:
+      0 15px 18px;
+  }
+
+  .interview-card-header {
+    padding:
+      17px;
+  }
+
+  .interview-score-grid {
+    gap: 6px;
+  }
+
+}
