@@ -5,3 +5,15 @@ psycopg2-binary
 python-multipart
 python-dotenv
 pydantic
+pydantic-settings
+passlib[bcrypt]
+python-jose[cryptography]
+email-validator
+PyPDF2
+python-docx
+scikit-learn
+numpy
+pandas
+sentence-transformers
+transformers
+torch
