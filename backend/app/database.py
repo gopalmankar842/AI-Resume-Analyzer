@@ -12,10 +12,15 @@ if not DATABASE_URL:
         "DATABASE_URL environment variable is not configured"
     )
 
-# Support PostgreSQL URLs that start with postgres://
+# Normalize PostgreSQL URLs and select psycopg2 driver
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace(
         "postgres://", "postgresql://", 1
+    )
+
+if DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace(
+        "postgresql://", "postgresql+psycopg2://", 1
     )
 
 engine = create_engine(DATABASE_URL)
