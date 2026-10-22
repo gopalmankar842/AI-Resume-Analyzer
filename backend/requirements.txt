@@ -17,3 +17,5 @@ pandas
 sentence-transformers
 transformers
 torch
+pwdlib[argon2]
+argon2-cffi
