@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../api";
 import "./History.css";
 
 function History() {
@@ -45,12 +45,12 @@ function History() {
       // RESUME ANALYSIS HISTORY
       // =====================================================
 
-      const analysisResponse = await axios.get(
-        `http://127.0.0.1:8000/resume/${resumeId}/history`,
-        {
-          headers,
-        }
-      );
+     const analysisResponse = await API.get(
+      `/resume/${resumeId}/history`,
+      {
+        headers,
+      }
+    );
 
       console.log(
         "Analysis History Response:",
@@ -64,8 +64,8 @@ function History() {
       // =====================================================
 
       try {
-        const interviewResponse = await axios.get(
-          `http://127.0.0.1:8000/resume/${resumeId}/interview-history`,
+        const interviewResponse = await API.get(
+          `/resume/${resumeId}/interview-history`,
           {
             headers,
           }
@@ -1021,6 +1021,7 @@ function History() {
                         </article>
 
                       );
+
 
                     }
                   )}
