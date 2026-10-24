@@ -1,13 +1,13 @@
 
 from functools import lru_cache
-
-from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
 @lru_cache(maxsize=1)
 def get_model():
-    """Load the model only when semantic matching is requested."""
+    # Import PyTorch-backed model only when needed.
+    from sentence_transformers import SentenceTransformer
+
     return SentenceTransformer(
         "all-MiniLM-L6-v2",
         device="cpu"
@@ -20,15 +20,8 @@ def calculate_semantic_similarity(
 ) -> float:
     model = get_model()
 
-    resume_embedding = model.encode(
-        [resume_text],
-        convert_to_numpy=True
-    )
-
-    job_embedding = model.encode(
-        [job_description],
-        convert_to_numpy=True
-    )
+    resume_embedding = model.encode([resume_text])
+    job_embedding = model.encode([job_description])
 
     similarity = cosine_similarity(
         resume_embedding,
