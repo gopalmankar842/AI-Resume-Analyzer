@@ -1,16 +1,17 @@
 
 import os
-
+from pathlib import Path
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
+env_path = Path(__file__).resolve().parents[1] / ".env"
+load_dotenv(dotenv_path=env_path)
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 if not DATABASE_URL:
-    raise RuntimeError(
-        "DATABASE_URL environment variable is not configured"
-    )
+    raise RuntimeError("DATABASE_URL environment variable is not configured")
 
 # Normalize PostgreSQL URLs and select psycopg2 driver
 if DATABASE_URL.startswith("postgres://"):
