@@ -1,7 +1,6 @@
-
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API from "../api";
 import "./ATSChecker.css";
 function ATSChecker() {
   const navigate = useNavigate();
@@ -53,8 +52,8 @@ function ATSChecker() {
       setResult(null);
 
       // Upload the resume using the existing endpoint.
-      const uploadResponse = await axios.post(
-        "http://127.0.0.1:8000/resume/upload",
+      const uploadResponse = await API.post(
+        "/resume/upload",
         formData,
         {
           headers: {
@@ -68,8 +67,8 @@ function ATSChecker() {
 
       // This standalone endpoint will be implemented
       // separately on the backend.
-      const scoreResponse = await axios.post(
-        `http://127.0.0.1:8000/resume/${resumeId}/ats-score`,
+      const scoreResponse = await API.post(
+        `/resume/${resumeId}/ats-score`,
         null,
         {
           headers: {
