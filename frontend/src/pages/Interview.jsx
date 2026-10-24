@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
+import API from "../api";
 import "./Interview.css";
 
 function Interview() {
@@ -105,15 +105,15 @@ function Interview() {
       timerStartedRef.current = false;
       timeoutHandledRef.current = false;
 
-      const response = await axios.post(
-        `http://127.0.0.1:8000/resume/${resumeId}/interview-questions`,
-        null,
-        {
-          params: {
-            job_description: jobDescription,
-          },
-        }
-      );
+     const response = await API.post(
+      `/resume/${resumeId}/interview-questions`,
+      null,
+      {
+        params: {
+          job_description: jobDescription,
+        },
+      }
+    ); 
 
       console.log(
         "Interview Questions:",
@@ -532,40 +532,19 @@ function Interview() {
       // API
       // ========================================================
 
-      const response =
-        await axios.post(
-          `http://127.0.0.1:8000/resume/${resumeId}/evaluate-answer`,
-          {
-            question:
-              question.question,
-
-            answer:
-              cleanedAnswer,
-
-            job_description:
-              jobDescription,
-
-            time_taken:
-              finalTimeTaken,
-
-            time_limit:
-              timeLimit,
-
-            // ==================================================
-            // STEP 68.5.1
-            // SEND QUESTION METADATA
-            // ==================================================
-
-            skill:
-              questionSkill,
-
-            question_type:
-              questionType,
-
-            difficulty:
-              questionDifficulty,
-          }
-        );
+      const response = await API.post(
+        `/resume/${resumeId}/evaluate-answer`,
+        {
+          question: question.question,
+          answer: cleanedAnswer,
+          job_description: jobDescription,
+          time_taken: finalTimeTaken,
+          time_limit: timeLimit,
+          skill: questionSkill,
+          question_type: questionType,
+          difficulty: questionDifficulty,
+        }
+      );
 
       console.log(
         "Answer Evaluation:",
