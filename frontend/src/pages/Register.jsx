@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../api";
 import "./Register.css";
 
 function Register() {
@@ -14,43 +14,41 @@ function Register() {
 
   const navigate = useNavigate();
 
+  
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    if (loading) return;
 
     try {
       setLoading(true);
       setMessage("");
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/auth/register",
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      const response = await API.post("/auth/register", {
+        name,
+        email,
+        password,
+      });
 
-      console.log(response.data);
-
+      console.log("Registration response:", response.data);
       setMessage("Registration successful!");
 
-      // Go to login after successful registration
       setTimeout(() => {
         navigate("/login");
       }, 1000);
-
     } catch (error) {
-      console.error(error);
+      console.error("Registration error:", error);
 
       setMessage(
         error.response?.data?.detail ||
-        "Registration failed."
+        error.message ||
+        "Registration failed. Please try again."
       );
-
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="register-page">

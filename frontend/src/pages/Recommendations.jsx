@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../api";
 import "./Recommendations.css";
 
 function Recommendations() {
@@ -65,18 +65,28 @@ function Recommendations() {
     const missingSkills =
       recommendations?.missing_skills || [];
 
+    const matchedSkillCount = Math.max(
+      0,
+      requiredSkills.length - missingSkills.length
+    );
+
     const skillCoverage =
       requiredSkills.length > 0
         ? Math.round(
-            ((requiredSkills.length - missingSkills.length) /
-              requiredSkills.length) *
-              100
+            Math.min(100, (matchedSkillCount / requiredSkills.length) * 100)
           )
         : 100;
 
+    // Ignore interview records that do not contain a valid score.
     const interviewScores = interviewHistory
-      .map((interview) => Number(interview.score || 0))
-      .filter((score) => !Number.isNaN(score));
+      .filter(
+        (interview) =>
+          interview.score !== null &&
+          interview.score !== undefined &&
+          interview.score !== ""
+      )
+      .map((interview) => Number(interview.score))
+      .filter((score) => Number.isFinite(score));
 
     const interviewPerformance =
       interviewScores.length > 0
@@ -113,84 +123,108 @@ function Recommendations() {
         : "LOW READINESS";
 
     const readinessAdvice =
-      skillCoverage < interviewPerformance
+      interviewScores.length === 0
+        ? "Complete a practice interview to assess your interview performance."
+        : skillCoverage < interviewPerformance
         ? "Your interview performance is stronger than your skill coverage. Focus on learning the missing job skills."
         : interviewPerformance < skillCoverage
         ? "Your resume shows good skill coverage, but your interview performance needs more practice."
         : "Your skills and interview performance are balanced. Continue improving both areas.";
         
 
-      const fetchInterviewHistory = async () => {
-          if (!resumeId) return;
+      const fetchInterviewHistory = useCallback(async () => {
+        if (!resumeId) {
+          setInterviewHistory([]);
+          return;
+        }
 
-          try {
-            setInterviewLoading(true);
+        const token = localStorage.getItem("token");
+        if (!token) {
+          setInterviewHistory([]);
+          return;
+        }
 
-            const token = localStorage.getItem("token");
+        try {
+          setInterviewLoading(true);
 
-            const response = await fetch(
-              `http://127.0.0.1:8000/resume/${resumeId}/interview-history`,
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              }
-            );
-
-            if (!response.ok) {
-              throw new Error("Failed to fetch interview history");
+          const response = await API.get(
+            `/resume/${resumeId}/interview-history`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             }
+          );
 
-            const data = await response.json();
+          setInterviewHistory(
+            Array.isArray(response.data?.history) ? response.data.history : []
+          );
+        } catch (error) {
+          console.error("Interview history error:", error);
+          setInterviewHistory([]);
+        } finally {
+          setInterviewLoading(false);
+        }
+      }, [resumeId]);
 
-            setInterviewHistory(data.history || []);
+      const fetchSkillProgress = useCallback(async () => {
+        if (!resumeId) {
+          setSkillProgress({});
+          return;
+        }
 
-          } catch (error) {
-            console.error(
-              "Interview history error:",
-              error
-            );
+        const token = localStorage.getItem("token");
+        if (!token) {
+          navigate("/login");
+          return;
+        }
 
-            setInterviewHistory([]);
+        try {
+          const response = await API.get(
+            `/resume/${resumeId}/skill-progress`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
 
-          } finally {
-            setInterviewLoading(false);
-          }
-        };
+          const progressMap = {};
+          const progressItems = Array.isArray(response.data?.progress)
+            ? response.data.progress
+            : [];
 
+          progressItems.forEach((item) => {
+            if (item?.skill) {
+              progressMap[item.skill] = item.status || "NOT STARTED";
+            }
+          });
 
-      const fetchSkillProgress = async () => {
-          if (!resumeId) return;
-
-          try {
-            const response = await axios.get(
-              `http://127.0.0.1:8000/resume/${resumeId}/skill-progress`
-            );
-
-            const progressMap = {};
-
-            response.data.progress.forEach((item) => {
-              progressMap[item.skill] = item.status;
-            });
-
-            setSkillProgress(progressMap);
-
-          } catch (error) {
-            console.error(
-              "Error fetching skill progress:",
-              error
-            );
-          }
-        };
+          setSkillProgress(progressMap);
+        } catch (error) {
+          console.error("Error fetching skill progress:", error);
+        }
+      }, [resumeId, navigate]);
 
       
       const updateSkillProgress = async (skill, status) => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          navigate("/login");
+          return;
+        }
+
         try {
-          const response = await axios.put(
-            `http://127.0.0.1:8000/resume/${resumeId}/skill-progress`,
+          const response = await API.put(
+            `/resume/${resumeId}/skill-progress`,
             {
               skill: skill,
               status: status,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             }
           );
 
@@ -198,7 +232,6 @@ function Recommendations() {
             ...previous,
             [skill]: response.data.status,
           }));
-
         } catch (error) {
           console.error("Error updating skill progress:", error);
         }
@@ -208,8 +241,11 @@ function Recommendations() {
         if (resumeId) {
           fetchInterviewHistory();
           fetchSkillProgress();
+        } else {
+          setInterviewHistory([]);
+          setSkillProgress({});
         }
-      }, [resumeId]);
+      }, [resumeId, fetchInterviewHistory, fetchSkillProgress]);
 
   // =========================
   // Get Recommendations
@@ -240,14 +276,13 @@ function Recommendations() {
         return;
       }
 
-      const response = await axios.post(
-        `http://127.0.0.1:8000/resume/${resumeId}/recommendations`,
+      const response = await API.post(
+        `/resume/${resumeId}/recommendations`,
         null,
         {
           params: {
             job_description: jobDescription,
           },
-
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -672,7 +707,7 @@ function Recommendations() {
                   </span>
 
                   <strong>
-                    {requiredSkills.length - missingSkills.length}
+                    {matchedSkillCount}
                     {" / "}
                     {requiredSkills.length}
                   </strong>

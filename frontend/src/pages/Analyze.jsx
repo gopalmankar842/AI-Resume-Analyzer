@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../api";
 import "./Analyze.css";
 
 function Analyze() {
@@ -67,8 +67,8 @@ function Analyze() {
         return;
       }
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/resume/upload",
+      const response = await API.post(
+        "/resume/upload",
         formData,
         {
           headers: {
@@ -117,8 +117,8 @@ function Analyze() {
       setMessage("");
       setResult(null);
 
-      const response = await axios.post(
-        `http://127.0.0.1:8000/resume/${resumeId}/final-match`,
+    const response = await API.post(
+      `/resume/${resumeId}/final-match`,
         null,
         {
           params: {
@@ -169,8 +169,8 @@ function Analyze() {
         return;
       }
 
-      const response = await axios.post(
-        `http://127.0.0.1:8000/resume/${resumeId}/ats-check`,
+      const response = await API.post(
+        `/resume/${resumeId}/ats-check`,
         null,
         {
           params: {

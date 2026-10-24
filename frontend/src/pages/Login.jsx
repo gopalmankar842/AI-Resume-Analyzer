@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../api";
 import "./Login.css";
 
 function Login() {
@@ -13,22 +13,20 @@ function Login() {
 
   const navigate = useNavigate();
 
+  
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    if (loading) return;
 
     try {
       setLoading(true);
       setMessage("");
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/auth/login",
-        {
-          email,
-          password,
-        }
-      );
-
-      console.log(response.data);
+      const response = await API.post("/auth/login", {
+        email,
+        password,
+      });
 
       const token =
         response.data.access_token ||
@@ -36,22 +34,19 @@ function Login() {
 
       if (token) {
         localStorage.setItem("token", token);
-
         setMessage("Login successful!");
-
         navigate("/dashboard");
       } else {
         setMessage("Login failed. Token not received.");
       }
-
     } catch (error) {
-      console.error(error);
+      console.error("Login error:", error);
 
       setMessage(
         error.response?.data?.detail ||
-        "Invalid email or password."
+        error.message ||
+        "Login failed. Please try again."
       );
-
     } finally {
       setLoading(false);
     }
